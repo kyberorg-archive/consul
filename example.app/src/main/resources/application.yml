@@ -1,0 +1,35 @@
+example.app:
+  db:
+    name: 'example_app'
+
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 20000
+        readTimeout: 20000
+        loggerLevel: basic
+
+management:
+  info:
+    git:
+      mode: full
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web.exposure:
+      include: '*'
+  export:
+    prometheus:
+      enabled: true
