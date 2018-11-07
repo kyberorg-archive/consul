@@ -33,16 +33,16 @@ curl -s -XPUT -d"{
 }" localhost:8500/v1/agent/service/register
 
 curl -s -XPUT -d"{
-  \"Name\": \"app\",
-  \"ID\": \"app\",
-  \"Tags\": [ \"app\" ],
+  \"Name\": \"example.app\",
+  \"ID\": \"example.app\",
+  \"Tags\": [ \"example.app\" ],
   \"Address\": \"localhost\",
   \"Port\": 8080,
   \"Check\": {
-    \"Name\": \"app HTTP on port 8080\",
-    \"ID\": \"app\",
+    \"Name\": \"example.app HTTP on port 8080\",
+    \"ID\": \"example.app\",
     \"Interval\": \"10s\",
-    \"HTTP\": \"app:8080/actuator/health\",
+    \"HTTP\": \"example.app:8080/actuator/health\",
     \"Timeout\": \"1s\",
     \"Status\": \"passing\"
   }

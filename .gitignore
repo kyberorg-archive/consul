@@ -3,3 +3,5 @@ example.app/.classpath
 example.app/.project
 example.app/.settings
 example.app/target
+example.app/.idea
+*.iml

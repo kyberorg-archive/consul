@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import example.app.domain.Image;
 import example.app.services.ImageService;
 
-@RefreshScope
 @RestController
 public class MainController {
 	private static Logger log = LoggerFactory.getLogger(MainController.class);
@@ -21,20 +20,16 @@ public class MainController {
 	@Autowired
 	private ImageService imageService;
 	
-	@Value("${logging.level.root}")
-	private String property;
+	@Value("${test.property}")
+	private String testProperty;
 	
     @GetMapping("/largest-image")
     public ResponseEntity<Image> getTitle(@RequestParam("url") String url) {
-    	log.info("Test info log");
-    	
-    	log.warn("Test warn log");
-    	
 		return ResponseEntity.ok(imageService.findLargestImage(url));
     }
 	
     @GetMapping("/property")
     public ResponseEntity<String> getProperty() {
-    	return ResponseEntity.ok(property);
+    	return ResponseEntity.ok(testProperty);
     }
 }

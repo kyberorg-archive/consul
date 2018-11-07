@@ -8,7 +8,7 @@ public interface BrowserlessClient {
 	@PostMapping("/function")
     ImageInfo findLargestImage(LargestImageRequest request);
 
-	public static class ImageInfo {
+	class ImageInfo {
         private String url;
 
         public String getUrl() {
@@ -16,7 +16,7 @@ public interface BrowserlessClient {
         }
     }
 
-    public static class LargestImageRequest {
+    class LargestImageRequest {
         private String code;
         private BrowserlessContext context;
 
@@ -34,7 +34,7 @@ public interface BrowserlessClient {
         }
     }
 
-    public static class BrowserlessContext {
+    class BrowserlessContext {
         private String url;
 
         public BrowserlessContext(String url) {
