@@ -19,9 +19,12 @@ public class PersistenceConfiguration {
 	@Value("${example.app.db.name}")
 	private String databaseName;
 	
-	@Autowired
-	private DiscoveryClient discoveryClient;
-	
+	private final DiscoveryClient discoveryClient;
+
+	public PersistenceConfiguration(DiscoveryClient discoveryClient) {
+		this.discoveryClient = discoveryClient;
+	}
+
 	@Bean
 	@Primary
 	public DataSource dataSource() {

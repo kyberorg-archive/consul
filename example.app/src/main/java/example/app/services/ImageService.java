@@ -17,14 +17,17 @@ import example.app.repositories.ImageRepository;
 
 @Service
 public class ImageService  {
-	@Autowired
-	private ImageRepository imageRepository;
+	private final ImageRepository imageRepository;
 	
-	@Autowired
-	private BrowserlessClient browserlessClient;
+	private final BrowserlessClient browserlessClient;
 
 	private String getLargestImageScript;
-	
+
+	public ImageService(ImageRepository imageRepository, BrowserlessClient browserlessClient) {
+		this.imageRepository = imageRepository;
+		this.browserlessClient = browserlessClient;
+	}
+
 	@PostConstruct
 	public void initialize() throws IOException {
 		getLargestImageScript = IOUtils.toString(getClass().getResourceAsStream("/getLargestImage.js"), StandardCharsets.UTF_8.name());

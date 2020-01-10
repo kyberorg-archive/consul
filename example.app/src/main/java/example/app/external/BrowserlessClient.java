@@ -3,11 +3,14 @@ package example.app.external;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient("browserless")
+@FeignClient("browserless") // по тэгу browserless достанет его адрес из консула
 public interface BrowserlessClient {
 	@PostMapping("/function")
     ImageInfo findLargestImage(LargestImageRequest request);
 
+    /**
+     * дата класс результата выполнения запроса к Browserless’у со ссылкой на изображение
+     */
 	class ImageInfo {
         private String url;
 
@@ -16,6 +19,9 @@ public interface BrowserlessClient {
         }
     }
 
+    /**
+     * хранит скрипт, который передается в Browserless на выполнение, и объект запроса
+     */
     class LargestImageRequest {
         private String code;
         private BrowserlessContext context;
@@ -34,6 +40,9 @@ public interface BrowserlessClient {
         }
     }
 
+    /**
+     * дата класс запроса со ссылкой на страницу
+     */
     class BrowserlessContext {
         private String url;
 

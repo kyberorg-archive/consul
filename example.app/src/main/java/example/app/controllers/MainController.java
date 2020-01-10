@@ -17,13 +17,16 @@ import example.app.services.ImageService;
 public class MainController {
 	private static Logger log = LoggerFactory.getLogger(MainController.class);
 	
-	@Autowired
-	private ImageService imageService;
+	private final ImageService imageService;
 	
-	@Value("${test.property}")
+	@Value("${test.property}") //Здесь поле testProperty вытягивается из key/value-хранилища Consul’a.
 	private String testProperty;
-	
-    @GetMapping("/largest-image")
+
+	public MainController(ImageService imageService) {
+		this.imageService = imageService;
+	}
+
+	@GetMapping("/largest-image")
     public ResponseEntity<Image> getTitle(@RequestParam("url") String url) {
 		return ResponseEntity.ok(imageService.findLargestImage(url));
     }

@@ -11,7 +11,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
-@EnableAutoConfiguration
 public class Application {
 
 	public static void main(String[] args) {
