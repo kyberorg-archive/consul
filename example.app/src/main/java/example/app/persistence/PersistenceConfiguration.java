@@ -28,7 +28,7 @@ public class PersistenceConfiguration {
 	@Bean
 	@Primary
 	public DataSource dataSource() {
-		var postgresInstance = getPostgresInstance();
+		ServiceInstance postgresInstance = getPostgresInstance();
 		
 	    return DataSourceBuilder
 	        .create()

@@ -34,12 +34,12 @@ public class ImageService  {
 	}
 	
 	public Image findLargestImage(String url) {
-		var browserlessContext = new BrowserlessContext(url);
-		var largestImageRequest = new LargestImageRequest(getLargestImageScript, browserlessContext);
+		BrowserlessContext browserlessContext = new BrowserlessContext(url);
+		LargestImageRequest largestImageRequest = new LargestImageRequest(getLargestImageScript, browserlessContext);
 		
-		var imageInfo = browserlessClient.findLargestImage(largestImageRequest);
+		BrowserlessClient.ImageInfo imageInfo = browserlessClient.findLargestImage(largestImageRequest);
 		
-		var image = new Image();
+		Image image = new Image();
 		
 		image.setSourceUrl(url);
 		image.setImageUrl(imageInfo.getUrl());
